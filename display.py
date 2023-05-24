@@ -3,7 +3,7 @@ import pandas as pd
 from datetime import datetime
 from PIL import Image
 import streamlit as st
-import plost as pt
+
 
 def display_results():
     st.set_page_config(
