@@ -54,7 +54,7 @@ def visuals():
         date = res.get("produced_date")
         p_date = f'Manufactured on {datetime(int(date[0:4]),int(date[4:6]),int(date[6:]))}'
         st.write(p_date)
-   xpand = st.expander("Disclaimer")
-   xpand.write('Please note that this app can only be used for project demonstration.')
+    xpand = st.expander("Disclaimer")
+    xpand.write('Please note that this app can only be used for project demonstration.')
 if __name__ == '__main__':
     visuals()
