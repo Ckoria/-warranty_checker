@@ -37,24 +37,27 @@ def visuals():
    #st.divider()
     col1, col2, col3, col4 = st.columns(4)
     date = res.get('wrty_date')
-    if date != "":
-        date = datetime(int(date[0:4]),int(date[4:6]),int(date[6:]))
-    with col1:
-        wrty = res.get('wrty_type')
-        st.write(f'Warranty Code: {wrty}')
-    with col2:
-        if wrty == 'LP':
-            st.write(f"In Warranty. Expires in {date - datetime.now()}.")
-        else:
-            st.write(f"Ooops! No longer in warranty. Expired on {datetime.now()-date} ago.")
-    with col3:
-        wrty_date = f"Warranty expires on {date}"
-        st.write(wrty_date)
-    with col4:
-        date = res.get("produced_date")
-        p_date = f'Manufactured on {datetime(int(date[0:4]),int(date[4:6]),int(date[6:]))}'
-        st.write(p_date)
-    xpand = st.expander("Disclaimer")
-    xpand.write('Please note that this app can only be used for project demonstration.')
+    try:
+        if date != "":
+            date = datetime(int(date[0:4]),int(date[4:6]),int(date[6:]))
+        with col1:
+            wrty = res.get('wrty_type')
+            st.write(f'Warranty Code: {wrty}')
+        with col2:
+            if wrty == 'LP':
+                st.write(f"In Warranty. Expires in {date - datetime.now()}.")
+            else:
+                st.write(f"Ooops! No longer in warranty. Expired on {datetime.now()-date} ago.")
+        with col3:
+            wrty_date = f"Warranty expires on {date}"
+            st.write(wrty_date)
+        with col4:
+            date = res.get("produced_date")
+            p_date = f'Manufactured on {datetime(int(date[0:4]),int(date[4:6]),int(date[6:]))}'
+            st.write(p_date)
+        xpand = st.expander("Disclaimer")
+        xpand.write('Please note that this app can only be used for project demonstration.')
+    except:
+        st.write("Provide infornatuon above")
 if __name__ == '__main__':
     visuals()
