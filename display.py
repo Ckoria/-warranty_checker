@@ -58,6 +58,6 @@ def visuals():
         xpand = st.expander("Disclaimer")
         xpand.write('Please note that this app can only be used for project demonstration.')
     except:
-        st.write("Provide infornatuon above")
+        st.write("Provide information above")
 if __name__ == '__main__':
     visuals()
