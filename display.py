@@ -10,11 +10,12 @@ def display_results():
     page_title="Warranty Checker",
     page_icon="🧊")
     st.subheader('Please note that this app can only be used for project demonstration only.')
+    #Import CSS with page styling
     with open('style.css') as f:
         st.markdown(f"<style>{f.read()}</style>", unsafe_allow_html=True)
     image = Image.open('Samsung.png')
     st.image(image)
-    st.title("SAMSUNG WARRANTY CHECK TOOL")
+    st.subheader("SAMSUNG WARRANTY CHECK TOOL")
     #st.divider()
     expander = st.expander("See Samples")
     expander.write("Model and Serial Number can be found on a sticker @ the back of any Samsung product")
@@ -25,6 +26,7 @@ def display_results():
         model = st.text_input("Enter model name")
     with col2:
         sn  = st.text_input("Enter Serial Number")
+    # Get json request to GSPN API
     try:
         res = ipaas_auth(model, sn).get('Return')
     except:
