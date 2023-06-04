@@ -9,7 +9,6 @@ def display_results():
     st.set_page_config(
     page_title="Warranty Checker",
     page_icon="🧊")
-    st.write('Please note that this app can only be used for project demonstration.')
     #Import CSS with page styling
     with open('style.css') as f:
         st.markdown(f"<style>{f.read()}</style>", unsafe_allow_html=True)
