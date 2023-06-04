@@ -1,11 +1,9 @@
-from dotenv import load_dotenv
-import os
+import streamlit as st
 def access_key(model, sn):
-    load_dotenv()
     api_token = {
-        'ipaas_key':os.getenv("IPAAS_KEY"),
+        'ipaas_key':st.secrets["IPAAS_TOKEN"],
         'ipaas_url':'https://eu.ipaas.samsung.com/eu/gcic/CheckWarranty/1.0/ImportSet'
     }
     #Payload
-    data = os.getenv("DATA")
+    data = st.secrets["DATA"]
     return api_token['ipaas_key'], api_token['ipaas_url'], data
