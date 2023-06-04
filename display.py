@@ -9,13 +9,14 @@ def display_results():
     st.set_page_config(
     page_title="Warranty Checker",
     page_icon="🧊")
-    st.subheader('Please note that this app can only be used for project demonstration only.')
+    st.subheader('Please note that this app can only be used for project demonstration.')
     #Import CSS with page styling
     with open('style.css') as f:
         st.markdown(f"<style>{f.read()}</style>", unsafe_allow_html=True)
     image = Image.open('Samsung.png')
     st.image(image)
-    st.subheader("SAMSUNG WARRANTY CHECK TOOL")
+    st.write("#")
+    st.write("WARRANTY CHECK TOOL")
     #st.divider()
     expander = st.expander("See Samples")
     expander.write("Model and Serial Number can be found on a sticker @ the back of any Samsung product")
@@ -47,7 +48,7 @@ def visuals():
             st.write(f'Warranty Code: {wrty}')
         with col2:
             if wrty == 'LP':
-                st.write(f"In Warranty. Expires in {date - datetime.now()}.")
+                st.write(f"The unit is In-Warranty. Expires in {str(date - datetime.now())}.")
             else:
                 st.write(f"Ooops! No longer in warranty. Expired on {datetime.now()-date} ago.")
         with col3:
@@ -58,7 +59,7 @@ def visuals():
             p_date = f'Manufactured on {datetime(int(date[0:4]),int(date[4:6]),int(date[6:]))}'
             st.write(p_date)
         xpand = st.expander("Disclaimer")
-        xpand.write('Please note that this app can only be used for project demonstration.')
+        xpand.write('Please note that this app can only be used for project demonstration.  It is not authorised by Samsung.')
     except:
         st.write("Provide information above")
 if __name__ == '__main__':
