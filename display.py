@@ -45,15 +45,19 @@ def visuals():
             date = datetime(int(date[0:4]),int(date[4:6]),int(date[6:]))
         with col1:
             wrty = res.get('wrty_type')
-            st.write(f'Warranty Code: {wrty}')
+            st.write(f'Warranty Code:')
+            st.write(wrty)
         with col2:
             if wrty == 'LP':
-                st.write(f"The unit is In-Warranty. Expires in {str(date - datetime.now())[0:-17]}.")
+                st.write(f"The unit is In-Warranty.")
+                st.write(f"Expires in {str(date - datetime.now())[0:-17]}.")
             else:
-                st.write(f"Ooops! No longer in warranty. Expired on {str(datetime.now() - date)[0:-17]} ago.")
+                st.write(f"Ooops! No longer in warranty.")
+                st.write(f"Expired on {str(datetime.now() - date)[0:-17]} ago.")
         with col3:
-            wrty_date = f"Warranty expires on {str(date)[0:10]}"
+            wrty_date = f"Warranty expires on " 
             st.write(wrty_date)
+            st.write(str(date)[0:10])
         with col4:
             date = res.get("produced_date")
             produced_date = (datetime(int(date[0:4]),int(date[4:6]),int(date[6:])))
