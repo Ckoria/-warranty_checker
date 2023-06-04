@@ -53,7 +53,7 @@ def visuals():
                 st.write(f"Ooops! No longer in warranty. Expired on {datetime.now()-date} ago.")
         with col3:
             wrty_date = f"Warranty expires on {date}"
-            st.write(wrty_date.strftime(%A %d %B %Y))
+            st.write(wrty_date.strftime(%d %B %Y))
         with col4:
             date = res.get("produced_date")
             p_date = f'Manufactured on {datetime(int(date[0:4]),int(date[4:6]),int(date[6:]))}'
