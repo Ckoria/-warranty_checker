@@ -1,4 +1,4 @@
-from accessToken import access_key
+import streamlit as st
 import requests
 from requests.auth import HTTPBasicAuth
 
@@ -7,7 +7,7 @@ def ipaas_auth(model, sn):
     ipaas_key, ipaas_url, payload = access_key(model, sn)
     hdrs = {    
         'Accept': 'application/json',
-        'Authorization': 'Bearer ' +ipaas_key,
+        'Authorization': 'Bearer ' +st.secrets["auth_token"],
         'Content-Type': 'application/json'
     }
     r = requests.post(url= ipaas_url, json= payload, 
