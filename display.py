@@ -52,12 +52,12 @@ def visuals():
             else:
                 st.write(f"Ooops! No longer in warranty. Expired on {str(datetime.now() - date)[-13:-1]} ago.")
         with col3:
-            wrty_date = f"Warranty expires on {(date).strftime("%x")}"
+            wrty_date = f"Warranty expires on {str(date)[0:10]}"
             st.write(wrty_date)
         with col4:
             date = res.get("produced_date")
             produced_date = (datetime(int(date[0:4]),int(date[4:6]),int(date[6:])))
-            p_date = f'Manufactured on {produced_date.strftime("%x")}'
+            p_date = f'Manufactured on {str(produced_date)[0:10]}'
             st.write((p_date))
         xpand = st.expander("Disclaimer")
         xpand.write('Please note that this app can only be used for project demonstration.  It is not authorised by Samsung.')
