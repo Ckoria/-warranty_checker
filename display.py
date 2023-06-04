@@ -48,9 +48,9 @@ def visuals():
             st.write(f'Warranty Code: {wrty}')
         with col2:
             if wrty == 'LP':
-                st.write(f"The unit is In-Warranty. Expires in {str(date - datetime.now())}.")
+                st.write(f"The unit is In-Warranty. Expires in {str(date - datetime.now())[-13:-1]}.")
             else:
-                st.write(f"Ooops! No longer in warranty. Expired on {datetime.now()-date} ago.")
+                st.write(f"Ooops! No longer in warranty. Expired on {str(datetime.now() - date)[-13:-1]} ago.")
         with col3:
             wrty_date = f"Warranty expires on {date.strftime("%c")}"
             st.write(wrty_date)
