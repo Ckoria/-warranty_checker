@@ -13,7 +13,7 @@ def display_results():
     with open('style.css') as f:
         st.markdown(f"<style>{f.read()}</style>", unsafe_allow_html=True)
     image = Image.open('Samsung.png')
-    st.image(image)
+    st.image(image, width= 300)
     st.write("#")
     st.write("WARRANTY CHECK TOOL")
     #st.divider()
