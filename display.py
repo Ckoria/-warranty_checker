@@ -4,11 +4,15 @@ from datetime import datetime
 from PIL import Image
 import streamlit as st
 
+# PLEASE NOTE!!!
+# THE CODE OR SCRIPT IS FUNCTIONING EXCEPT THAT THE API KEY IS NO LONGER WORKING
 
 def display_results():
     st.set_page_config(
     page_title="Warranty Checker",
-    page_icon="🧊")
+    page_icon="🧑‍💻",
+    layout="centered")
+    # st.subheader('Please note that this app can only be used for project demonstration.')
     #Import CSS with page styling
     with open('style.css') as f:
         st.markdown(f"<style>{f.read()}</style>", unsafe_allow_html=True)
@@ -27,14 +31,15 @@ def display_results():
     with col2:
         sn  = st.text_input("Enter Serial Number")
     # Get json request to GSPN API
-    try:
-        res = ipaas_auth(model, sn).get('Return')
-    except:
-        st.write("Please check your internet connection")
-    return {'wrty_type': res.get('EvWtyType'),'wrty_date': res.get('EvBasicLaborWtyDate'),
-            'produced_date': res.get('EvProductDate')   
-        }   
+    # try:
+        # res = ipaas_auth(model, sn).get('Return')
+    # except:
+        # st.write("Please check your internet connection")
+    # return {'wrty_type': res.get('EvWtyType'),'wrty_date': res.get('EvBasicLaborWtyDate'),
+            # 'produced_date': res.get('EvProductDate')}
+    
 def visuals():
+    # Not being called due to API key no longer exist
     res = display_results()
    #st.divider()
     col1, col2, col3, col4 = st.columns(4)
@@ -44,27 +49,26 @@ def visuals():
             date = datetime(int(date[0:4]),int(date[4:6]),int(date[6:]))
         with col1:
             wrty = res.get('wrty_type')
-            st.write(f'Warranty Code:')
-            st.write(wrty)
+            st.write(f'Warranty Code: {wrty}')
         with col2:
             if wrty == 'LP':
-                st.write(f"The unit is In-Warranty.")
-                st.write(f"Expires in {str(date - datetime.now())[0:-17]}.")
+                st.write(f"The unit is In-Warranty. Expires in {str(date - datetime.now())}.")
             else:
-                st.write(f"Ooops! No longer in warranty.")
-                st.write(f"Expired on {str(datetime.now() - date)[0:-17]} ago.")
+                st.write(f"Ooops! No longer in warranty. Expired on {datetime.now()-date} ago.")
         with col3:
-            wrty_date = f"Warranty expires on " 
-            st.write(wrty_date)
-            st.write(str(date)[0:10])
+            wrty_date = f"Warranty expires on {date}"
+            st.write(wrty_date[0:10])
         with col4:
             date = res.get("produced_date")
-            produced_date = (datetime(int(date[0:4]),int(date[4:6]),int(date[6:])))
-            st.write(f'Manufactured on')
-            st.write((str(produced_date)[0:10]))
+            p_date = f'Manufactured on {datetime(int(date[0:4]),int(date[4:6]),int(date[6:]))}'
+            st.write(p_date)
         xpand = st.expander("Disclaimer")
         xpand.write('Please note that this app can only be used for project demonstration.  It is not authorised by Samsung.')
     except:
         st.write("Provide information above")
+        
+        
 if __name__ == '__main__':
-    visuals()
+    display_results()
+    st.write("PLEASE NOTE!!!")
+    st.write("THE CODE OR SCRIPT IS FUNCTIONING EXCEPT THAT THE API KEY IS NO LONGER WORKING")
