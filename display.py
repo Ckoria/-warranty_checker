@@ -71,4 +71,4 @@ def visuals():
 if __name__ == '__main__':
     display_results()
     st.write("PLEASE NOTE!!!")
-    st.write("THE CODE OR SCRIPT IS FUNCTIONING EXCEPT THAT THE API KEY IS NO LONGER WORKING")
+    st.write("THE PROJECT HAS BEEN DISCONTINUED DUE TO DATA PRIVACY")
